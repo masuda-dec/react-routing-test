@@ -1,18 +1,18 @@
 import logo from './logo.svg';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
-import Home from './routes/HOME';
-import About from './routes/ABOUT';
-import Contact from './routes/CONTACT';
-import Posts from './routes/POSTS';
-import Post from './routes/POST';
-import PostIndex from './routes/POSTINDEX'
-import NoMatch from './routes/NOMATH'
+import Home from './routes/home';
+import About from './routes/about';
+import Contact from './routes/contact';
+import ThreadIndex from './routes/threadindex';
+import Thread from './routes/thread';
+import Threads from './routes/threads'
+import NoMatch from './routes/nomath'
 
 function App() {
   return (
     <div className='App'>
-      <h1>Hello React Router v6</h1>
+      <h1>10ちゃんねる</h1>
       <ul>
         <li>
           <NavLink
@@ -41,9 +41,9 @@ function App() {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? 'active' : undefined)}
-            to="/POSTS"
+            to="/threadindex"
           >
-            Posts
+            新着スレッド
           </NavLink>
         </li>
       </ul>
@@ -51,14 +51,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path='/posts' element={<Posts />} >
-          <Route index element={<PostIndex />} />
-          <Route path=':postId' element={<Post />} />
+        <Route path='/threadindex' element={<ThreadIndex />} >
+          <Route index element={<Threads />} />
+          <Route path=":threadId" element={<Thread />} />
         </Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>
   );
+  //
 }
 
 export default App;
